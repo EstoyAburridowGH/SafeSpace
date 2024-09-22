@@ -5,18 +5,18 @@ import { Send } from 'lucide-react'
 
 export default function Chat() {
   const [messages, setMessages] = useState([
-    { id: 1, text: "Hello! How can I help you today?", sender: "psychologist" },
+    { id: 1, text: "¡Hola! ¿Cómo te puedo ayudar?", sender: "psychologist" },
   ])
   const [inputMessage, setInputMessage] = useState("")
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault()
-    if (inputMessage.trim() !== "") {
-      setMessages([...messages, { id: messages.length + 1, text: inputMessage, sender: "user" }])
-      setInputMessage("")
-      // Here you would typically send the message to the server
-      // and handle the psychologist's response
-    }
+    if (inputMessage.trim() === "") return
+
+    setMessages([...messages, { id: messages.length + 1, text: inputMessage, sender: "user" }])
+    setInputMessage("")
+    // Here you would typically send the message to the server
+    // and handle the psychologist's response
   }
 
   return (
@@ -47,8 +47,8 @@ export default function Chat() {
             type="text"
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
-            placeholder="Type your message..."
-            className="flex-1 p-2 border border-slate-300 focus:outline-none focus:border-slate-500"
+            placeholder="Escribe tu mensaje..."
+            className="flex-1 p-2 border text-slate-800 border-slate-300 focus:outline-none focus:border-slate-500"
           />
           <button
             type="submit"

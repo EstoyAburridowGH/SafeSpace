@@ -1,29 +1,28 @@
-'use client'
+import React, { useState } from 'react';
+import { Menu, MessageSquare, BookOpen, Flag } from 'lucide-react';
+import Chat from './components/chat';
+import Blog from './components/blog';
+import Report from './components/report';
+import './globals.css';
 
-import { useState } from 'react'
-import { Menu, MessageSquare, BookOpen, Flag } from 'lucide-react'
-import Chat from './components/chat'
-import Blog from './components/blog'
-import Report from './components/report'
+function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('chat');
 
-export default function Component() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeTab, setActiveTab] = useState('chat')
-
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const renderContent = () => {
     switch (activeTab) {
       case 'chat':
-        return <Chat />
+        return <Chat />;
       case 'blog':
-        return <Blog />
+        return <Blog />;
       case 'report':
-        return <Report />
+        return <Report />;
       default:
-        return <div>Select a function</div>
+        return <div>Select a function</div>;
     }
-  }
+  };
 
   return (
     <div className="flex h-screen bg-slate-100">
@@ -65,7 +64,7 @@ export default function Component() {
               onClick={() => setActiveTab('report')}
             >
               <Flag size={24} className="inline-block mr-2" />
-              {isMenuOpen && 'Report'}
+              {isMenuOpen && 'Reportar'}
             </li>
           </ul>
         </nav>
@@ -84,5 +83,7 @@ export default function Component() {
         </main>
       </div>
     </div>
-  )
+  );
 }
+
+export default App;

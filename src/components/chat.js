@@ -1,23 +1,21 @@
-'use client'
-
-import { useState } from 'react'
-import { Send } from 'lucide-react'
+import React, { useState } from 'react';
+import { Send } from 'lucide-react';
 
 export default function Chat() {
   const [messages, setMessages] = useState([
     { id: 1, text: "¡Hola! ¿Cómo te puedo ayudar?", sender: "psychologist" },
-  ])
-  const [inputMessage, setInputMessage] = useState("")
+  ]);
+  const [inputMessage, setInputMessage] = useState("");
 
-  const handleSendMessage = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (inputMessage.trim() === "") return
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    if (inputMessage.trim() === "") return;
 
-    setMessages([...messages, { id: messages.length + 1, text: inputMessage, sender: "user" }])
-    setInputMessage("")
-    // Here you would typically send the message to the server
-    // and handle the psychologist's response
-  }
+    setMessages([...messages, { id: messages.length + 1, text: inputMessage, sender: "user" }]);
+    setInputMessage("");
+    // Aquí típicamente se enviaría el mensaje al servidor
+    // y manejarías la respuesta del psicólogo
+  };
 
   return (
     <div className="flex flex-col h-full">
@@ -59,5 +57,5 @@ export default function Chat() {
         </div>
       </form>
     </div>
-  )
+  );
 }

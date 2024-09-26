@@ -1,28 +1,19 @@
-'use client'
-
-import { useState } from 'react'
-
-interface BlogPost {
-  id: number
-  title: string
-  content: string
-  author: string
-  isAnonymous: boolean
-}
+import React, { useState } from 'react';
 
 export default function Blog() {
-  const [posts, setPosts] = useState<BlogPost[]>([
-    { id: 1, title: "My Journey", content: "This is my story...", author: "Jane Doe", isAnonymous: false },
-    { id: 2, title: "Overcoming Challenges", content: "I want to share...", author: "Anonymous", isAnonymous: true },
-  ])
-  const [newPost, setNewPost] = useState({ title: "", content: "", author: "", isAnonymous: false })
+  const [posts, setPosts] = useState([
+    // Puedes descomentar y añadir posts de ejemplo aquí si lo deseas
+    // { id: 1, title: "My Journey", content: "This is my story...", author: "Jane Doe", isAnonymous: false },
+    // { id: 2, title: "Overcoming Challenges", content: "I want to share...", author: "Anonymous", isAnonymous: true },
+  ]);
+  const [newPost, setNewPost] = useState({ title: "", content: "", author: "", isAnonymous: false });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setPosts([...posts, { ...newPost, id: posts.length + 1 }])
-    setNewPost({ title: "", content: "", author: "", isAnonymous: false })
-    // Here you would typically send the new post to the server
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setPosts([...posts, { ...newPost, id: posts.length + 1 }]);
+    setNewPost({ title: "", content: "", author: "", isAnonymous: false });
+    // Aquí típicamente enviarías el nuevo post al servidor
+  };
 
   return (
     <div className="p-4 space-y-6">
@@ -32,7 +23,7 @@ export default function Blog() {
           <h3 className="text-xl font-semibold text-slate-800">{post.title}</h3>
           <p className="mt-2 text-slate-800">{post.content}</p>
           <p className="mt-2 text-sm text-slate-600">
-            Escrito por: {post.isAnonymous ? "Anonymous" : post.author}
+            Escrito por: {post.isAnonymous ? "Anónimo" : post.author}
           </p>
         </div>
       ))}
@@ -76,5 +67,5 @@ export default function Blog() {
         </button>
       </form>
     </div>
-  )
+  );
 }

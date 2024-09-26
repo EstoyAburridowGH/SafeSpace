@@ -1,6 +1,4 @@
-'use client'
-
-import { useState } from 'react'
+import React, { useState } from 'react';
 
 export default function Report() {
   const [report, setReport] = useState({
@@ -9,16 +7,16 @@ export default function Report() {
     date: "",
     isAnonymous: true,
     name: ""
-  })
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Report submitted:", report)
-    // Here you would typically send the report to the server
-    // and handle the response
-    alert("Report submitted successfully")
-    setReport({ description: "", location: "", date: "", isAnonymous: true, name: "" })
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Report submitted:", report);
+    // Aquí típicamente enviarías el reporte al servidor
+    // y manejarías la respuesta
+    alert("Report submitted successfully");
+    setReport({ description: "", location: "", date: "", isAnonymous: true, name: "" });
+  };
 
   return (
     <div className="p-4 max-w-2xl mx-auto">
@@ -56,12 +54,10 @@ export default function Report() {
             required
           />
         </div>
-        <div>
-        </div>
         <button type="submit" className="px-4 py-2 bg-slate-600 text-white hover:bg-slate-700">
           Subir reporte
         </button>
       </form>
     </div>
-  )
+  );
 }
